@@ -47,5 +47,8 @@ set showmatch
 
 hi MatchParen ctermbg=red guibg=red
 
+"map :q! to :q<CR> because when we quit without saving all changes must be
+"undone
+noremap :q :q!<CR>
 "Use the javascript syntax for json files
 "autocmd BufNewFile,BufRead *.json setfiletype javascript
