@@ -17,7 +17,8 @@ Plug 'tpope/vim-sensible'
 "Install the NerdTree plugin.
 Plug 'scrooloose/nerdtree'
 
-
+"Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+Plug 'ctrlpvim/ctrlp.vim'
 
 "Initialize plugin system
 call plug#end()
@@ -50,5 +51,6 @@ hi MatchParen ctermbg=red guibg=red
 "map :q! to :q<CR> because when we quit without saving all changes must be
 "undone
 noremap :q :q!<CR>
+
 "Use the javascript syntax for json files
 "autocmd BufNewFile,BufRead *.json setfiletype javascript
