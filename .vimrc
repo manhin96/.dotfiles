@@ -86,6 +86,9 @@ set hlsearch
 set showmatch
 set showcmd
 
+noremap 0 ^
+noremap ^ 0
+
 hi MatchParen ctermbg=blue guibg=blue
 
 "map :q! to :q<CR> because when we quit without saving all changes must be
