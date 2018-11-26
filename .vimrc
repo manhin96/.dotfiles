@@ -1,3 +1,9 @@
+"Automatically download vim-plug if its not installed
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 "This section contains the plugin istalled with the vim pluginsManager plug
 
 "To install the pluings, execute vim and enter :plugInstall
@@ -7,6 +13,9 @@ call plug#begin('~/.vim/plugged')
 "Make sure to use single quotes
 " Shorthand notation; fetches https://github.com/ + github repository
 " containing the vim setup
+
+"Install the badwolf colorscheme
+Plug 'sjl/badwolf'
 
 "install the vim-sensible plugin with some default changes to vim (mostly sets)
 Plug 'tpope/vim-sensible'
@@ -20,6 +29,18 @@ Plug 'scrooloose/nerdtree'
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 Plug 'ctrlpvim/ctrlp.vim'
 
+"A light and configurable statusline/tabline plugin for Vim
+Plug 'itchyny/lightline.vim'
+
+"A better vim Json highlighter
+Plug 'elzr/vim-json'
+
+"Plugin for the python mode
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
+
+"plugin for auto pair
+Plug 'jiangmiao/auto-pairs'
+
 "Initialize plugin system
 call plug#end()
 
@@ -32,8 +53,26 @@ map <C-n> :NERDTreeToggle<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+"Configuration for the json highlighter
+au! BufRead,BufNewFile *.json set filetype=json
+
+augroup json_autocmd
+    autocmd!
+    autocmd FileType json set autoindent
+    autocmd FileType json set formatoptions=tcq2l
+    autocmd FileType json set textwidth=78 shiftwidth=2
+    autocmd FileType json set softtabstop=2 tabstop=8
+    autocmd FileType json set expandtab
+augroup END
+
+"Configuration for python-mode
+filetype plugin on
+filetype indent on
+let g:pymode_python = 'python3'
 
 "My prefered settings
+let mapleader = ","
+map <Space> ,
 syntax on
 set expandtab
 set tabstop=4
@@ -45,12 +84,18 @@ colo badwolf
 set ttyfast
 set hlsearch
 set showmatch
+set showcmd
 
-hi MatchParen ctermbg=red guibg=red
+hi MatchParen ctermbg=blue guibg=blue
 
 "map :q! to :q<CR> because when we quit without saving all changes must be
 "undone
-noremap :q :q!<CR>
+noremap <leader>q :q!<CR>
+noremap <leader>w :w<CR>
+noremap <leader>wq :wq<CR>
 
-"Use the javascript syntax for json files
-"autocmd BufNewFile,BufRead *.json setfiletype javascript
+"mapping to switch panes faster
+noremap <leader>h <C-w>h
+noremap <leader>j <C-w>j
+noremap <leader>k <C-w>k
+noremap <leader>l <C-w>l
