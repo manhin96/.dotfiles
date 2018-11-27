@@ -87,6 +87,9 @@ set showmatch
 set showcmd
 set wildmenu
 set wildmode=longest:list,full
+set clipboard^=unnamed, unnamedplus
+set mouse=
+set showmode
 
 noremap 0 ^
 noremap ^ 0
