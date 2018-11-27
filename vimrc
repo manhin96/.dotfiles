@@ -60,8 +60,8 @@ augroup json_autocmd
     autocmd!
     autocmd FileType json set autoindent
     autocmd FileType json set formatoptions=tcq2l
-    autocmd FileType json set textwidth=78 shiftwidth=2
-    autocmd FileType json set softtabstop=2 tabstop=8
+    autocmd FileType json set textwidth=40 shiftwidth=2
+    autocmd FileType json set softtabstop=2 tabstop=4
     autocmd FileType json set expandtab
 augroup END
 
@@ -85,6 +85,8 @@ set ttyfast
 set hlsearch
 set showmatch
 set showcmd
+set wildmenu
+set wildmode=longest:list,full
 
 noremap 0 ^
 noremap ^ 0
