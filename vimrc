@@ -41,6 +41,9 @@ Plug 'python-mode/python-mode', { 'branch': 'develop' }
 "plugin for auto pair
 Plug 'jiangmiao/auto-pairs'
 
+"plugin for ansible
+Plug 'pearofducks/ansible-vim'
+
 "Initialize plugin system
 call plug#end()
 
@@ -90,6 +93,8 @@ set wildmode=longest:list,full
 set clipboard^=unnamed
 set mouse=
 set showmode
+set ruler
+set complete=.,w,b,u,t,kspell
 
 noremap 0 ^
 noremap ^ 0
