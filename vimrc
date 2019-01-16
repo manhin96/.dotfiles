@@ -44,7 +44,11 @@ Plug 'jiangmiao/auto-pairs'
 "plugin for ansible
 Plug 'pearofducks/ansible-vim'
 
+"Plugin for vimwiki
+Plug 'vimwiki/vimwiki'
 "Initialize plugin system
+
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 "NerdTree Config
@@ -112,3 +116,13 @@ noremap <leader>h <C-w>h
 noremap <leader>j <C-w>j
 noremap <leader>k <C-w>k
 noremap <leader>l <C-w>l
+
+noremap tn :tabnew<CR>
+noremap tc :tabclose<CR>
+
+"GitGutter configurations
+let g:gitgutter_enabled = 1
+let g:gitgutter_signs = 1
+let g:gitgutter_highlight_lines = 1
+set updatetime=100
+
